@@ -1,0 +1,17 @@
+name: channels
+
+# Lists the Buffer organisations and channels the key reaches, to find BUFFER_X_CHANNEL.
+on:
+  workflow_dispatch:
+
+jobs:
+  channels:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+        run: node src/buffer.mjs channels

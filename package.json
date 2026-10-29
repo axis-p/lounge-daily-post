@@ -1,0 +1,13 @@
+{
+  "name": "lounge-daily-post",
+  "private": true,
+  "type": "module",
+  "description": "Every morning's 今日の一問 cards for Puzzle Lounge, drawn and handed to Buffer for X, Instagram and YouTube.",
+  "scripts": {
+    "morning": "node src/morning.mjs",
+    "check": "node --check src/*.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.48.2"
+  }
+}

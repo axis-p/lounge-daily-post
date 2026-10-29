@@ -1,0 +1,50 @@
+name: morning
+
+# Twenty past midnight in Japan, once every game's daily has changed: draw the six cards, keep
+# them here (Buffer fetches the images from this repository), then schedule the 7:00 post.
+on:
+  schedule:
+    - cron: "20 15 * * *"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "YYYY-MM-DD (empty: today in Japan)"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: morning
+  cancel-in-progress: false
+
+jobs:
+  morning:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Chrome and Japanese fonts
+        run: |
+          npx playwright install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+      - name: Draw the cards
+        run: node src/morning.mjs ${{ inputs.date }}
+      - name: Keep them
+        run: |
+          git config user.name "lounge-daily-post"
+          git config user.email "actions@users.noreply.github.com"
+          git add images
+          git diff --cached --quiet || git commit -m "Cards for ${{ inputs.date || 'today' }}"
+          git push
+      - name: Schedule the post
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          BUFFER_X_CHANNEL: ${{ vars.BUFFER_X_CHANNEL }}
+          POST_ENABLED: ${{ vars.POST_ENABLED }}
+        run: node src/post.mjs ${{ inputs.date }}
