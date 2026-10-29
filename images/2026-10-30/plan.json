@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-30",
+  "dueAt": "2026-10-29T22:00:00.000Z",
+  "jigsaw": {
+    "title": "モレーン湖",
+    "conditions": "108 ピース・手切り風・ノーマル",
+    "when": "2026-10-30 の一枚。次のお題は 0 時（日本時間）に変わります。",
+    "thumb": "https://img.puzzlelounge.app/puzzles/thumbs/photo-moraine-lake.webp",
+    "picture": "https://img.puzzlelounge.app/puzzles/photo-moraine-lake.webp"
+  },
+  "thread": [
+    {
+      "game": "tangram",
+      "image": "tangram.png",
+      "text": "🧩 今日の一問｜10月30日（金）\n\n今日の目玉はタングラム No.24\n7 枚の板で今日のかたち\n毎日 0 時に変わる、みんな同じ一問。タイムを競おう\n\n▶ https://puzzlelounge.app/tangram/?utm_source=x&utm_medium=social&utm_campaign=daily\n#パズルラウンジ #タングラム"
+    },
+    {
+      "game": "nanpure",
+      "image": "nanpure.png",
+      "text": "ナンプレ（むずかしい）\n9×9・ヒントつき\n▶ https://puzzlelounge.app/nanpure/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    },
+    {
+      "game": "mines",
+      "image": "mines.png",
+      "text": "マインスイーパー（むずかしい）\n16×30・地雷 99・運ゲーなし\n▶ https://puzzlelounge.app/mines/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    },
+    {
+      "game": "nonogram",
+      "image": "nonogram.png",
+      "text": "ノノグラム No.9\n15×15・今日の模様\n▶ https://puzzlelounge.app/nonogram/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    },
+    {
+      "game": "loop",
+      "image": "loop.png",
+      "text": "ループパズル No.6\n10×10・一本の輪を作る\n▶ https://puzzlelounge.app/loop/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    },
+    {
+      "game": "jigsaw",
+      "image": "jigsaw.png",
+      "text": "ジグソーパズル「モレーン湖」\n108 ピース・手切り風・ノーマル\n▶ https://puzzlelounge.app/jigsaw/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    }
+  ]
+}
