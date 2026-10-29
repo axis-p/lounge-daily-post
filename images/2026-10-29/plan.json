@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-29",
+  "dueAt": "2026-10-28T22:00:00.000Z",
+  "jigsaw": {
+    "title": "睡蓮の池と日本の橋",
+    "conditions": "108 ピース・クラシック・ノーマル",
+    "when": "2026-10-29 の一枚。次のお題は 0 時（日本時間）に変わります。",
+    "thumb": "https://img.puzzlelounge.app/puzzles/thumbs/monet-water-lily-pond.webp",
+    "picture": "https://img.puzzlelounge.app/puzzles/monet-water-lily-pond.webp"
+  },
+  "thread": [
+    {
+      "game": "loop",
+      "image": "loop.png",
+      "text": "🧩 今日の一問｜10月29日（木）\n\n今日の目玉はループパズル No.5\n10×10・一本の輪を作る\n毎日 0 時に変わる、みんな同じ一問。タイムを競おう\n\n▶ https://puzzlelounge.app/loop/?utm_source=x&utm_medium=social&utm_campaign=daily\n#パズルラウンジ #ループパズル"
+    },
+    {
+      "game": "nanpure",
+      "image": "nanpure.png",
+      "text": "ナンプレ（ふつう）\n9×9・ヒントつき\n▶ https://puzzlelounge.app/nanpure/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    },
+    {
+      "game": "mines",
+      "image": "mines.png",
+      "text": "マインスイーパー（むずかしい）\n16×30・地雷 99・運ゲーなし\n▶ https://puzzlelounge.app/mines/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    },
+    {
+      "game": "nonogram",
+      "image": "nonogram.png",
+      "text": "ノノグラム No.8\n15×15・今日の模様\n▶ https://puzzlelounge.app/nonogram/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    },
+    {
+      "game": "tangram",
+      "image": "tangram.png",
+      "text": "タングラム No.23\n7 枚の板で今日のかたち\n▶ https://puzzlelounge.app/tangram/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    },
+    {
+      "game": "jigsaw",
+      "image": "jigsaw.png",
+      "text": "ジグソーパズル「睡蓮の池と日本の橋」\n108 ピース・クラシック・ノーマル\n▶ https://puzzlelounge.app/jigsaw/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    }
+  ]
+}
