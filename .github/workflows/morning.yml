@@ -10,6 +10,10 @@ on:
       date:
         description: "YYYY-MM-DD (empty: today in Japan)"
         required: false
+      post:
+        description: "Post this run even while POST_ENABLED is off (a one-off test)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -46,5 +50,5 @@ jobs:
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
           BUFFER_X_CHANNEL: ${{ vars.BUFFER_X_CHANNEL }}
-          POST_ENABLED: ${{ vars.POST_ENABLED }}
+          POST_ENABLED: ${{ inputs.post && 'true' || vars.POST_ENABLED }}
         run: node src/post.mjs ${{ inputs.date }}
