@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-31",
+  "dueAt": "2026-10-30T22:00:00.000Z",
+  "jigsaw": {
+    "title": "レーニア山の花畑",
+    "conditions": "108 ピース・手切り風・ノーマル",
+    "when": "2026-10-31 の一枚。次のお題は 0 時（日本時間）に変わります。",
+    "thumb": "https://img.puzzlelounge.app/puzzles/thumbs/photo-wildflower-meadow.webp",
+    "picture": "https://img.puzzlelounge.app/puzzles/photo-wildflower-meadow.webp"
+  },
+  "thread": [
+    {
+      "game": "jigsaw",
+      "image": "jigsaw.png",
+      "text": "🧩 今日の一問｜10月31日（土）\n\n今日の目玉はジグソーパズル「レーニア山の花畑」\n108 ピース・手切り風・ノーマル\nひとりでも、友だちと最大 8 人でも組めます\n毎日 0 時に変わる、みんな同じ一問。タイムを競おう\n\n▶ https://puzzlelounge.app/jigsaw/?utm_source=x&utm_medium=social&utm_campaign=daily\n#パズルラウンジ #ジグソーパズル"
+    },
+    {
+      "game": "nanpure",
+      "image": "nanpure.png",
+      "text": "ナンプレ（鬼）\n9×9・ヒントつき\n▶ https://puzzlelounge.app/nanpure/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    },
+    {
+      "game": "mines",
+      "image": "mines.png",
+      "text": "マインスイーパー（むずかしい）\n16×30・地雷 99・運ゲーなし\n▶ https://puzzlelounge.app/mines/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    },
+    {
+      "game": "nonogram",
+      "image": "nonogram.png",
+      "text": "ノノグラム No.10\n15×15・今日の模様\n▶ https://puzzlelounge.app/nonogram/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    },
+    {
+      "game": "loop",
+      "image": "loop.png",
+      "text": "ループパズル No.7\n10×10・一本の輪を作る\n▶ https://puzzlelounge.app/loop/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    },
+    {
+      "game": "tangram",
+      "image": "tangram.png",
+      "text": "タングラム No.25\n7 枚の板で今日のかたち\n▶ https://puzzlelounge.app/tangram/?utm_source=x&utm_medium=social&utm_campaign=daily"
+    }
+  ]
+}
