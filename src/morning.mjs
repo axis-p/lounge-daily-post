@@ -22,7 +22,15 @@ console.log(`jigsaw: ${jigsaw.title} (${jigsaw.conditions})`);
 const page = await (await browser.newContext({ viewport: { width: 1200, height: 675 }, deviceScaleFactor: 1 })).newPage();
 for (const game of ORDER) {
   await page.setContent(cardHtml(game, date, days[game], jigsaw), { waitUntil: "networkidle" });
-  await page.evaluate(() => document.fonts.ready);
+  // Japanese type, loaded before the picture is taken: a missing face falls back to the
+  // system's CJK font, which draws these characters the Chinese way.
+  const loaded = await page.evaluate(async () => {
+    const text = document.body.innerText;
+    await Promise.all([document.fonts.load(`700 40px "Noto Sans JP"`, text), document.fonts.load(`800 40px "M PLUS Rounded 1c"`, text)]);
+    await document.fonts.ready;
+    return document.fonts.check(`700 40px "Noto Sans JP"`, text) && document.fonts.check(`800 40px "M PLUS Rounded 1c"`, text);
+  });
+  if (!loaded) throw new Error(`${game}: the Japanese fonts did not load`);
   await page.screenshot({ path: join(dir, `${game}.png`) });
   console.log(`drawn ${game}`);
 }

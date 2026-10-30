@@ -108,19 +108,20 @@ function jigsawArt(picture) {
 function shell(game, body) {
   const g = GAMES[game];
   return `<!doctype html><html lang="ja"><head><meta charset="utf-8">
-<link rel="stylesheet" href="${SITE}/fonts/lounge.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&family=M+PLUS+Rounded+1c:wght@800&display=block">
 <style>
   * { box-sizing: border-box; margin: 0; }
   html, body { width: 1200px; height: 675px; }
-  body { background: #f6f5f2; color: #1e222a; font-family: "Lounge Sans", "Noto Sans JP", sans-serif; position: relative; overflow: hidden; }
+  body { background: #f6f5f2; color: #1e222a; font-family: "Noto Sans JP", "Noto Sans CJK JP", sans-serif; position: relative; overflow: hidden; }
   .blob { position: absolute; border-radius: 50%; }
-  .tile { display: inline-grid; place-items: center; color: #fff; font-family: "Lounge Round", "Lounge Sans", sans-serif; font-weight: 800; border-radius: 22%; box-shadow: 0 6px 0 rgb(0 0 0 / .12); }
+  .tile { display: inline-grid; place-items: center; color: #fff; font-family: "M PLUS Rounded 1c", "Noto Sans JP", "Noto Sans CJK JP", sans-serif; font-weight: 800; border-radius: 22%; box-shadow: 0 6px 0 rgb(0 0 0 / .12); }
   .left { position: absolute; left: 80px; top: 74px; width: 560px; }
   .head { display: flex; align-items: center; gap: 22px; }
   .head .tile { width: 92px; height: 92px; font-size: 56px; }
-  .name { font-family: "Lounge Round", "Lounge Sans", sans-serif; font-weight: 800; font-size: 46px; letter-spacing: .02em; }
+  .name { font-family: "M PLUS Rounded 1c", "Noto Sans JP", "Noto Sans CJK JP", sans-serif; font-weight: 800; font-size: 46px; letter-spacing: .02em; }
   .chip { display: inline-block; margin-top: 44px; padding: 8px 20px; border-radius: 999px; font-weight: 700; font-size: 26px; }
-  .headline { font-family: "Lounge Round", "Lounge Sans", sans-serif; font-weight: 800; font-size: 104px; line-height: 1.05; margin-top: 18px; letter-spacing: .01em; }
+  .headline { font-family: "M PLUS Rounded 1c", "Noto Sans JP", "Noto Sans CJK JP", sans-serif; font-weight: 800; font-size: 104px; line-height: 1.05; margin-top: 18px; letter-spacing: .01em; }
   .headline.small { font-size: 60px; line-height: 1.2; word-break: auto-phrase; text-wrap: balance; }
   .detail { margin-top: 18px; font-size: 28px; font-weight: 700; color: #4d5361; }
   .date { margin-top: 10px; font-size: 26px; font-weight: 500; color: #737a86; }
