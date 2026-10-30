@@ -1,0 +1,30 @@
+name: cancel
+
+# Deletes one scheduled Buffer post by its id (printed by the morning run as "scheduled on X: <id>").
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: "Buffer post id"
+        required: true
+
+jobs:
+  cancel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          POST_ID: ${{ inputs.id }}
+        run: |
+          node -e '
+          import("./src/buffer.mjs").then(async ({ ask }) => {
+            const id = JSON.stringify(process.env.POST_ID);
+            for (const q of [`mutation { deletePost(input: { id: ${id} }) { __typename } }`, `mutation { deletePost(input: { postId: ${id} }) { __typename } }`]) {
+              try { console.log(JSON.stringify(await ask(q))); return; } catch (e) { console.log(String(e.message).slice(0, 400)); }
+            }
+            process.exit(1);
+          });'
