@@ -1,7 +1,9 @@
 name: morning
 
-# Twenty past midnight in Japan, once every game's daily has changed: draw the six cards, keep
-# them here (Buffer fetches the images from this repository), then schedule the 7:00 post.
+# Twenty past midnight in Japan, once every game's daily has changed: draw the six cards and keep
+# them here (Buffer fetches the images from this repository), lay them out on the run's page, and
+# wait. The post job runs only when it is approved in the x-post environment - nothing reaches X
+# that has not been looked at.
 on:
   schedule:
     - cron: "20 15 * * *"
@@ -10,22 +12,16 @@ on:
       date:
         description: "YYYY-MM-DD (empty: today in Japan)"
         required: false
-      post:
-        description: "Post this run even while POST_ENABLED is off (a one-off test)"
-        type: boolean
-        default: false
 
 permissions:
   contents: write
 
-concurrency:
-  group: morning
-  cancel-in-progress: false
-
 jobs:
-  morning:
+  draw:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    outputs:
+      date: ${{ steps.date.outputs.date }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -33,22 +29,39 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Chrome and Japanese fonts
-        run: |
-          npx playwright install --with-deps chromium
-          sudo apt-get install -y fonts-noto-cjk
+      - name: Chrome
+        run: npx playwright install --with-deps chromium
+      - id: date
+        env:
+          WANTED: ${{ inputs.date }}
+        run: echo "date=${WANTED:-$(TZ=Asia/Tokyo date +%F)}" >> "$GITHUB_OUTPUT"
       - name: Draw the cards
-        run: node src/morning.mjs ${{ inputs.date }}
+        run: node src/morning.mjs ${{ steps.date.outputs.date }}
       - name: Keep them
         run: |
           git config user.name "lounge-daily-post"
           git config user.email "actions@users.noreply.github.com"
           git add images
-          git diff --cached --quiet || git commit -m "Cards for ${{ inputs.date || 'today' }}"
+          git diff --cached --quiet || git commit -m "Cards for ${{ steps.date.outputs.date }}"
           git push
+          echo "CARDS_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+      - name: Lay them out for review
+        run: node src/summary.mjs ${{ steps.date.outputs.date }} >> "$GITHUB_STEP_SUMMARY"
+
+  post:
+    needs: draw
+    runs-on: ubuntu-latest
+    environment: x-post
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
       - name: Schedule the post
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
           BUFFER_X_CHANNEL: ${{ vars.BUFFER_X_CHANNEL }}
-          POST_ENABLED: ${{ inputs.post && 'true' || vars.POST_ENABLED }}
-        run: node src/post.mjs ${{ inputs.date }}
+          POST_ENABLED: "true"
+        run: node src/post.mjs ${{ needs.draw.outputs.date }}

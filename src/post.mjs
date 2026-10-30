@@ -1,6 +1,6 @@
 // Hands a day's plan to Buffer: on X, the featured card as the post and the other five as its
-// thread, at 7:00 in Japan. It does nothing but print the plan until it is switched on - POST_ENABLED
-// is "true" and the key and channel are set - so the cards can be watched for a few days first.
+// thread, at 7:00 in Japan. In the workflow it runs only once the day's cards are approved (the
+// x-post environment); anywhere POST_ENABLED is not "true" it only prints the plan.
 //
 //   node src/post.mjs [YYYY-MM-DD]
 import { readFileSync, existsSync } from "node:fs";
