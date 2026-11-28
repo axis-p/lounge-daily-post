@@ -13,7 +13,7 @@ function grid(x, y, cols, rows, size, stroke, thick = []) {
   return s;
 }
 
-const ART = {
+export const ART = {
   // An empty 9×9 with the boxes drawn heavy, and one question in the middle.
   nanpure: () => `<svg viewBox="0 0 400 400"><rect x="20" y="20" width="360" height="360" rx="14" fill="#fff"/>
     ${grid(20, 20, 9, 9, 40, "#3a3f4b33", [0, 3, 6, 9])}
@@ -98,7 +98,7 @@ const ART = {
 };
 
 /** The whole picture with the day's cut drawn faintly over it, as a jigsaw. */
-function jigsawArt(picture) {
+export function jigsawArt(picture) {
   let cuts = "";
   for (let i = 1; i < 6; i++) cuts += `<path d="M ${i * 100} 0 ${Array.from({ length: 6 }, (_, j) => `L ${i * 100} ${j * 100 + 38} q ${j % 2 ? -18 : 18} 0 ${j % 2 ? -18 : 18} 12 q 0 12 ${j % 2 ? 18 : -18} 12 L ${i * 100} ${j * 100 + 100}`).join(" ")}"/>`;
   for (let j = 1; j < 6; j++) cuts += `<path d="M 0 ${j * 100} ${Array.from({ length: 6 }, (_, i) => `L ${i * 100 + 38} ${j * 100} q 0 ${i % 2 ? 18 : -18} 12 ${i % 2 ? 18 : -18} q 12 0 12 ${i % 2 ? -18 : 18} L ${i * 100 + 100} ${j * 100}`).join(" ")}"/>`;
